@@ -1,0 +1,42 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true 
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "airbnb",
+    "plugin:jest/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "@emotion",
+    "jest",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "jest/no-mocks-import": 0,
+    "react/jsx-filename-extension": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "semi": 2
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./src"]
+      }
+    }
+  }
+}
