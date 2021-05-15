@@ -20,10 +20,6 @@ const solutions = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 const MyMenu = ({ title }) => {
   return (
     <Popover className="relative">
