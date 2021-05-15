@@ -1,22 +1,18 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import Head from 'next/head';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Navbar from '../comps/Navbar';
 
-export default function Home({ children }) {
-    return (
-        <>
-            <Head>
-                <title>Todo</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <div className="flex flex-col h-screen justify-between">
-                <Navbar />
-                {/* flex items-center justify-center */}
-                <main className="h-full overflow-y-scroll px-2 sm:px-10 md:px-12 lg:px-44">{children}</main>
-                <Footer />
-            </div>
-        </>
-    );
-}
+const Layout = ({ children, title }) => {
+  return (
+    <>
+      <Navbar title={title} />
+      <div className="max-w-screen-2xl mx-auto">
+        <main style={{ minHeight: 'calc(100vh - 64px)' }}>{children}</main>
+      </div>
+    </>
+  );
+};
+
+Layout.defaultProps = {
+  title: 'Bottle Rocket',
+};
+
+export default Layout;

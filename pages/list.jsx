@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import LayoutAlpha from '../comps/LayoutAlpha';
+import Layout from '../comps/Layout';
 import FailedToLoad from '../comps/FailedToLoad';
 
 const ImageGrid = ({ restaurants, onSelectRestaurant }) => {
@@ -167,6 +167,7 @@ const List = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [fetchError, setFetchError] = useState();
   const [selectedRestaurant, setSelectedRestaurant] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -175,8 +176,10 @@ const List = (props) => {
         resp = await axios.get(`/api/restaurants`);
         setRestaurants(resp?.data || []);
         setSelectedRestaurant(resp?.data?.[0]?.name || '');
+        setIsLoading(false);
       } catch (error) {
         setFetchError(true);
+        setIsLoading(false);
       }
     };
     fetchRestaurants();
@@ -187,18 +190,20 @@ const List = (props) => {
     setSelectedRestaurant(name);
   };
 
+  if (isLoading) return <p>Loading...</p>;
+
   if (fetchError)
     return (
-      <LayoutAlpha title="Lunch Tyme">
+      <Layout title="Lunch Tyme">
         <FailedToLoad />
-      </LayoutAlpha>
+      </Layout>
     );
 
   console.log('\n', '\n', `restaurants?.[0] = `, restaurants?.[0], '\n', '\n');
   console.log('\n', '\n', `selectedRestaurant = `, selectedRestaurant, '\n', '\n');
 
   return (
-    <LayoutAlpha title="Lunch Tyme">
+    <Layout title="Lunch Tyme">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div
           className="w-full pb-4"
@@ -212,7 +217,7 @@ const List = (props) => {
           <ImageGrid restaurants={restaurants} onSelectRestaurant={handleSelectRestaurant} />
         </div>
       </div>
-    </LayoutAlpha>
+    </Layout>
   );
 };
 

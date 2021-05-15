@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import LayoutAlpha from '../comps/LayoutAlpha';
+import Layout from '../comps/Layout';
 import FailedToLoad from '../comps/FailedToLoad';
 import Map from '../comps/Map';
 
@@ -83,9 +83,9 @@ const Detail = (props) => {
 
   if (fetchError)
     return (
-      <LayoutAlpha title="Detail Page">
+      <Layout title="Detail Page">
         <FailedToLoad />
-      </LayoutAlpha>
+      </Layout>
     );
 
   const currentRestaurant = restaurants.find((r) => r.name === selectedRestaurant);
@@ -93,7 +93,7 @@ const Detail = (props) => {
   // console.log('\n', '\n', `currentRestaurant = `, currentRestaurant, '\n', '\n');
   // console.groupEnd();
   return (
-    <LayoutAlpha title="Lunch Tyme">
+    <Layout title="Lunch Tyme">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div
           className="w-full pb-4"
@@ -105,7 +105,7 @@ const Detail = (props) => {
           <Map restaurant={currentRestaurant} />
         </div>
       </div>
-    </LayoutAlpha>
+    </Layout>
   );
 };
 
