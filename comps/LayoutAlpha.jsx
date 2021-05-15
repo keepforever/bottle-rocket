@@ -1,12 +1,16 @@
 import NavbarAlpha from '../comps/NavbarAlpha';
 
-const Layout = ({ children }) => {
+const LayoutAlpha = ({ children, title }) => {
   return (
-    <div className="bg-gray-900 max-w-screen-2xl mx-auto text-white">
-      <NavbarAlpha />
+    <div className="max-w-screen-2xl mx-auto">
+      <NavbarAlpha title={title} />
       <main style={{ minHeight: 'calc(100vh - 64px)' }}>{children}</main>
     </div>
   );
 };
 
-export default Layout;
+LayoutAlpha.defaultProps = {
+  title: 'Bottle Rocket',
+};
+
+export default LayoutAlpha;
