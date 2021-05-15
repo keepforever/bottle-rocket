@@ -1,5 +1,4 @@
 import Navbar from '../comps/Navbar';
-import '../styles/globals.css';
 
 const Layout = ({ children, title }) => {
   return (
