@@ -65,7 +65,7 @@ const MyMenu = ({ title }) => {
 
 const Navbar = ({ title }) => {
   return (
-    <nav className="bg-green-400" style={{ height: '64px' }}>
+    <div className="bg-green-400 h-16">
       <div className="px-6 flex items-center justify-between h-16">
         <Link href="/">
           <a className="text-white font-bold">Home</a>
@@ -75,7 +75,7 @@ const Navbar = ({ title }) => {
 
         <p>{title}</p>
       </div>
-    </nav>
+    </div>
   );
 };
 
