@@ -20,7 +20,7 @@ const LeftColumn = () => {
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl text-center">
-            we look forward to hearing from you
+            We look forward to hearing from you
           </h1>
         </div>
       </div>
