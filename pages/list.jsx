@@ -186,7 +186,6 @@ const List = (props) => {
   }, []);
 
   const handleSelectRestaurant = (name) => {
-    console.log('\n', '\n', `name = `, name, '\n', '\n');
     setSelectedRestaurant(name);
   };
 
@@ -199,8 +198,8 @@ const List = (props) => {
       </Layout>
     );
 
-  console.log('\n', '\n', `restaurants?.[0] = `, restaurants?.[0], '\n', '\n');
-  console.log('\n', '\n', `selectedRestaurant = `, selectedRestaurant, '\n', '\n');
+  // console.log('\n', '\n', `restaurants?.[0] = `, restaurants?.[0], '\n', '\n');
+  // console.log('\n', '\n', `selectedRestaurant = `, selectedRestaurant, '\n', '\n');
 
   return (
     <Layout title="Lunch Tyme">

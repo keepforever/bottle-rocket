@@ -75,7 +75,6 @@ const Detail = (props) => {
   }, []);
 
   const handleSelectRestaurant = (name) => {
-    console.log('\n', '\n', `name = `, name, '\n', '\n');
     setSelectedRestaurant(name);
   };
 
