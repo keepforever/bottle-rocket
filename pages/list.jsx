@@ -58,11 +58,16 @@ const ImageGrid = ({ restaurants, onSelectRestaurant }) => {
 };
 
 const DetailSidebar = ({ selectedRestaurant = {} }) => {
+  const displayInfo = {
+    city: selectedRestaurant.location.city,
+    address: selectedRestaurant.location.address,
+    'Cross Street': selectedRestaurant.location.crossStreet,
+  };
   return (
-    <aside className="w-full bg-white p-8 border-l border-gray-200 overflow-y-auto lg:block">
+    <aside className="hidden w-full bg-white p-8 overflow-y-auto md:block">
       <div className="pb-16 space-y-6">
         <div>
-          <div className="block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
+          <div className="block w-full aspect-w-7 aspect-h-4 rounded-lg overflow-hidden">
             <img src={selectedRestaurant.backgroundImageURL} alt="" className="object-cover" />
           </div>
           <div className="mt-4 flex items-start justify-between">
@@ -71,7 +76,7 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
                 <span className="sr-only">Details for </span>
                 {selectedRestaurant.name}
               </h2>
-              <p className="text-sm font-medium text-gray-500">{selectedRestaurant.name}</p>
+              <p className="text-sm font-medium text-gray-500">{selectedRestaurant.category}</p>
             </div>
             <button
               type="button"
@@ -83,17 +88,17 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
             </button>
           </div>
         </div>
-        {/* <div>
+        <div>
           <h3 className="font-medium text-gray-900">Information</h3>
-          <dl className="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
-            {Object.keys(selectedRestaurant.information).map((key) => (
+          <dl className="mt-2 border-gray-200 divide-y divide-gray-200">
+            {Object.keys(displayInfo).map((key) => (
               <div key={key} className="py-3 flex justify-between text-sm font-medium">
                 <dt className="text-gray-500">{key}</dt>
-                <dd className="text-gray-900">{selectedRestaurant.information[key]}</dd>
+                <dd className="text-gray-900">{displayInfo[key]}</dd>
               </div>
             ))}
           </dl>
-        </div> */}
+        </div>
         {/* <div>
           <h3 className="font-medium text-gray-900">Description</h3>
           <div className="mt-2 flex items-center justify-between">
