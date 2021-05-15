@@ -3,5 +3,8 @@
         "activityBar.background": "#253117",
         "titleBar.activeBackground": "#344520",
         "titleBar.activeForeground": "#F8FBF6"
-    }
+    },
+    "cSpell.words": [
+        "MAPBOX"
+    ]
 }
