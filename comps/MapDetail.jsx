@@ -3,13 +3,18 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapPopup from './MapPopup';
 
-const Map = ({ restaurant, isFull = false }) => {
+const MapDetail = ({
+  restaurant,
+  isFull = false,
+  restaurants = [],
+  onSelectRestaurant = () => {},
+}) => {
   const mapRef = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
   const [viewport, setViewport] = useState({
     latitude: restaurant?.location?.lat,
     longitude: restaurant?.location?.lng,
-    zoom: 10,
+    zoom: 13,
   });
 
   const toggleShowPopup = () => {
@@ -29,6 +34,39 @@ const Map = ({ restaurant, isFull = false }) => {
         maxZoom={15}
         mapStyle="mapbox://styles/keepforever/ckorcscny3jm718pq6xwbrfvx"
       >
+        {restaurants.map((r, index) => {
+          return (
+            <Marker
+              latitude={r?.location?.lat}
+              longitude={r?.location?.lng}
+              offsetLeft={-15}
+              offsetTop={-15}
+            >
+              <button
+                onClick={() => {
+                  onSelectRestaurant(r.name);
+                }}
+                type="button"
+                style={{ width: '30px', height: '30px', fontSize: '30px' }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="fill-current text-black"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+              </button>
+            </Marker>
+          );
+        })}
         <Marker
           latitude={restaurant?.location?.lat}
           longitude={restaurant?.location?.lng}
@@ -63,4 +101,4 @@ const Map = ({ restaurant, isFull = false }) => {
   );
 };
 
-export default Map;
+export default MapDetail;

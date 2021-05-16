@@ -40,7 +40,7 @@ const NavbarList = () => {
     <div className="h-16 bg-green-400">
       <div className="px-6 flex items-center justify-between h-16">
         <MyMenu />
-        <p className="text-white"> Lunch Tyme</p>
+        <p className="text-white text-xl"> Lunch Tyme</p>
         <img className="h-8 w-8" src="/icon_map@2x.png" alt="map icon" />
       </div>
     </div>

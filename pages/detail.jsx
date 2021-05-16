@@ -4,13 +4,9 @@ import axios from 'axios';
 import LayoutList from '../comps/LayoutList';
 import FailedToLoad from '../comps/FailedToLoad';
 import Map from '../comps/Map';
+import MapDetail from '../comps/MapDetail';
 
 const DetailSidebar = ({ selectedRestaurant = {} }) => {
-  const displayInfo = {
-    city: selectedRestaurant.location.city,
-    address: selectedRestaurant.location.address,
-    'Cross Street': selectedRestaurant.location.crossStreet,
-  };
   return (
     <aside className="w-full bg-white md:p-8 overflow-y-auto">
       <div className="hidden md:block pb-16 space-y-6">
@@ -18,34 +14,28 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
           <div className="block w-full aspect-w-7 aspect-h-4 rounded-lg overflow-hidden">
             <img src={selectedRestaurant.backgroundImageURL} alt="" className="object-cover" />
           </div>
-          <div className="mt-4 flex items-start justify-between">
+          <div className="flex items-start justify-between bg-green-400 p-4">
             <div>
-              <h2 className="text-lg font-medium text-gray-900">
+              <h2 className="text-xl font-bold text-gray-100">
                 <span className="sr-only">Details for </span>
                 {selectedRestaurant.name}
               </h2>
-              <p className="text-sm font-medium text-gray-500">{selectedRestaurant.category}</p>
+              <p className="text-md font-light text-gray-200">{selectedRestaurant.category}</p>
             </div>
-            <button
-              type="button"
-              className="ml-4 bg-white rounded-full h-8 w-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              {/* <HeartIcon className="h-6 w-6" aria-hidden="true" /> */}
-              <span>Heart</span>
-              <span className="sr-only">Favorite</span>
-            </button>
           </div>
-        </div>
-        <div>
-          <h3 className="font-medium text-gray-900">Information</h3>
-          <dl className="mt-2 border-gray-200 divide-y divide-gray-200">
-            {Object.keys(displayInfo).map((key) => (
-              <div key={key} className="py-3 flex justify-between text-sm font-medium">
-                <dt className="text-gray-500">{key}</dt>
-                <dd className="text-gray-900">{displayInfo[key]}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="flex w-3/4">
+            <p className="pt-4 pl-4">{selectedRestaurant?.location?.formattedAddress?.join(' ')}</p>
+          </div>
+
+          <div className="flex w-3/4">
+            <p className="pt-4 pl-4">{selectedRestaurant?.contact?.formattedPhone}</p>
+          </div>
+
+          {selectedRestaurant?.contact?.twitter && (
+            <div className="flex w-3/4">
+              <p className="pt-4 pl-4">&#64;{selectedRestaurant?.contact?.twitter}</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -65,16 +55,21 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
                   <p className="text-md font-light text-gray-200">{selectedRestaurant.category}</p>
                 </div>
               </div>
-            </div>
-            <div className="px-4">
-              <dl className="mt-2 border-gray-200 divide-y divide-gray-200">
-                {Object.keys(displayInfo).map((key) => (
-                  <div key={key} className="py-3 flex justify-between text-sm font-medium">
-                    <dt className="text-gray-500">{key}</dt>
-                    <dd className="text-gray-900">{displayInfo[key]}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="flex w-3/4">
+                <p className="pt-4 pl-4">
+                  {selectedRestaurant?.location?.formattedAddress?.join(' ')}
+                </p>
+              </div>
+
+              <div className="flex w-3/4">
+                <p className="pt-4 pl-4">{selectedRestaurant?.contact?.formattedPhone}</p>
+              </div>
+
+              {selectedRestaurant?.contact?.twitter && (
+                <div className="flex w-3/4">
+                  <p className="pt-4 pl-4">&#64;{selectedRestaurant?.contact?.twitter}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -126,7 +121,14 @@ const Detail = (props) => {
           className="hidden w-full md:block"
           style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}
         >
-          <Map restaurant={currentRestaurant} isFull />
+          <MapDetail
+            restaurant={currentRestaurant}
+            isFull
+            restaurants={restaurants}
+            onSelectRestaurant={(name) => {
+              setSelectedRestaurant(name);
+            }}
+          />
         </div>
       </div>
     </LayoutList>

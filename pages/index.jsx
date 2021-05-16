@@ -3,7 +3,7 @@ import { summaryConfig } from '../constants';
 
 const Home = () => {
   return (
-    <LayoutWeb>
+    <LayoutWeb title="Home">
       <div className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">

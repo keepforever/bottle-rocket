@@ -120,7 +120,7 @@ const RightColumn = () => {
 
 const Web = (props) => {
   return (
-    <LayoutWeb title="Web">
+    <LayoutWeb title="contact">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="w-full pb-4" style={{ maxHeight: 'calc(100vh - 64px)' }}>
           <LeftColumn />
