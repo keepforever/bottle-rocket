@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 
 import { linkConfig } from '../constants';
-import { MenuIcon } from '@heroicons/react/outline';
+import HamburgerIcon from './HamburgerIcon';
 
 const MyMenuReach = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const MyMenuReach = () => {
     <Menu>
       <MenuButton className="btn btn-primary mr-1">
         <div className="flex items-center">
-          <MenuIcon className="h-12 w-12 mr-3" />
+          <HamburgerIcon className="h-12 w-12 mr-3" />
           <p className="font-bold tracking-tighter text-red-500"> contact</p>
         </div>
       </MenuButton>
