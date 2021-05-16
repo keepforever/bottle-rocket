@@ -117,9 +117,10 @@ const DrawerDetail = ({ open, setOpen, selectedRestaurant }) => {
     <div
       className={classnames('mobile-nav', {
         'is-menu-active': open,
+        // hidden: !open,
       })}
     >
-      <div className="w-screen max-w-md">
+      <div className="w-screen">
         <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
           <div className="px-4 sm:px-6">
             <div className="flex items-start justify-between">
@@ -224,26 +225,29 @@ const List = (props) => {
     );
 
   return (
-    <Layout title="Lunch Tyme">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div
-          className="w-full pb-4"
-          style={{ maxHeight: 'calc(100vh - 64px)' /* , overflowX: 'scroll'  */ }}
-        >
-          <DetailSidebar
-            selectedRestaurant={restaurants.find((r) => r.name === selectedRestaurant)}
-          />
+    <>
+      <Layout title="Lunch Tyme">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div
+            className="w-full pb-4"
+            style={{ maxHeight: 'calc(100vh - 64px)' /* , overflowX: 'scroll'  */ }}
+          >
+            <DetailSidebar
+              selectedRestaurant={restaurants.find((r) => r.name === selectedRestaurant)}
+            />
+          </div>
+          <div className="w-full" style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}>
+            <ImageGrid restaurants={restaurants} onSelectRestaurant={handleSelectRestaurant} />
+          </div>
         </div>
-        <div className="w-full" style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}>
-          <ImageGrid restaurants={restaurants} onSelectRestaurant={handleSelectRestaurant} />
-        </div>
-      </div>
+      </Layout>
+
       <DrawerDetail
         open={open}
         setOpen={setOpen}
         selectedRestaurant={restaurants.find((r) => r.name === selectedRestaurant)}
       />
-    </Layout>
+    </>
   );
 };
 

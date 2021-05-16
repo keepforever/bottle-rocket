@@ -5,7 +5,7 @@ const Layout = ({ children, title }) => {
     <>
       <Navbar title={title} />
       <div className="max-w-screen-2xl mx-auto">
-        <main style={{ minHeight: 'calc(100vh - 64px)' }}>{children}</main>
+        <main style={{ minHeight: 'calc(100vh - 64px)', overflowX: 'hidden' }}>{children}</main>
       </div>
     </>
   );
