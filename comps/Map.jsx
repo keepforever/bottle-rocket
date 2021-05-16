@@ -69,7 +69,7 @@ const Map = ({ restaurant, isFull = false }) => {
         ref={(instance) => (mapRef.current = instance)}
         minZoom={5}
         maxZoom={15}
-        mapStyle="mapbox://styles/leighhalliday/ckhjaksxg0x2v19s1ovps41ef"
+        mapStyle="mapbox://styles/keepforever/ckorcscny3jm718pq6xwbrfvx"
       >
         <Marker
           latitude={restaurant?.location?.lat}
@@ -82,7 +82,22 @@ const Map = ({ restaurant, isFull = false }) => {
             type="button"
             style={{ width: '30px', height: '30px', fontSize: '30px' }}
           >
-            <img src="/tab_lunch@2x.png" className="w-8" alt="selected restaurant" />
+            {/* <img src="/tab_lunch@2x.png" className="w-8" alt="selected restaurant" />
+             */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current text-green-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              />
+            </svg>
           </button>
         </Marker>
 

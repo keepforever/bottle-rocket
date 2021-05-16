@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MailIcon, PhoneIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 
-import Layout from '../comps/Layout';
+import LayoutWeb from '../comps/LayoutWeb';
 import FailedToLoad from '../comps/FailedToLoad';
 import Map from '../comps/Map';
 
@@ -120,7 +120,7 @@ const RightColumn = () => {
 
 const Web = (props) => {
   return (
-    <Layout title="Web">
+    <LayoutWeb title="Web">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="w-full pb-4" style={{ maxHeight: 'calc(100vh - 64px)' }}>
           <LeftColumn />
@@ -130,7 +130,7 @@ const Web = (props) => {
           <RightColumn />
         </div>
       </div>
-    </Layout>
+    </LayoutWeb>
   );
 };
 

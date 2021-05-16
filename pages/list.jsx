@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
-import { XIcon } from '@heroicons/react/outline';
+import { XIcon, HeartIcon } from '@heroicons/react/outline';
 import Map from '../comps/Map';
 
 import Layout from '../comps/Layout';
@@ -117,14 +117,13 @@ const DrawerDetail = ({ open, setOpen, selectedRestaurant }) => {
     <div
       className={classnames('mobile-nav', {
         'is-menu-active': open,
-        // hidden: !open,
       })}
     >
       <div className="w-screen">
         <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
           <div className="px-4 sm:px-6">
             <div className="flex items-start justify-between">
-              <div>title</div>
+              <div className="text-2xl">{selectedRestaurant?.name}</div>
               <div className="ml-3 h-7 flex items-center">
                 <button
                   className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -142,24 +141,16 @@ const DrawerDetail = ({ open, setOpen, selectedRestaurant }) => {
                 <div className="block w-full rounded-lg" style={{ maxHeight: '400px' }}>
                   <Map restaurant={selectedRestaurant} />
                 </div>
-                <div className="mt-4 flex items-start justify-between">
+                <div className="flex items-start justify-between bg-green-400 p-4">
                   <div>
-                    <h2 className="text-lg font-medium text-gray-900">
+                    <h2 className="text-xl font-bold text-gray-100">
                       <span className="sr-only">Details for </span>
                       {selectedRestaurant.name}
                     </h2>
-                    <p className="text-sm font-medium text-gray-500">
+                    <p className="text-md font-light text-gray-200">
                       {selectedRestaurant.category}
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    className="ml-4 bg-white rounded-full h-8 w-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  >
-                    {/* <HeartIcon className="h-6 w-6" aria-hidden="true" /> */}
-                    <span>Heart</span>
-                    <span className="sr-only">Favorite</span>
-                  </button>
                 </div>
               </div>
               <div>
