@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 .mobile-nav {
   transition: all 0.4s ease-in-out;
   position: absolute;
