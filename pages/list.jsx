@@ -289,7 +289,7 @@ const List = (props) => {
   }, []);
 
   const handleSelectRestaurant = (name) => {
-    const isSmall = window.matchMedia('(max-width: 639px)')?.matches;
+    const isSmall = window.matchMedia('(max-width: 768px)')?.matches;
 
     if (isSmall) {
       setSelectedRestaurant(name);

@@ -57,8 +57,6 @@ const Map = ({ restaurant, isFull = false }) => {
     setShowPopup((b) => !b);
   };
 
-  console.log('\n', '\n', `viewport = `, viewport, '\n', '\n');
-
   return (
     <div className="text-black relative">
       <ReactMapGL
