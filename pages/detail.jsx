@@ -101,7 +101,7 @@ const Detail = (props) => {
           <DetailSidebar selectedRestaurant={currentRestaurant} />
         </div>
         <div className="w-full" style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}>
-          <Map restaurant={currentRestaurant} />
+          <Map restaurant={currentRestaurant} isFull />
         </div>
       </div>
     </Layout>

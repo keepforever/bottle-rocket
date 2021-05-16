@@ -44,7 +44,7 @@ const MyPopup = ({ restaurant, toggleShowPopup }) => (
   </Popup>
 );
 
-const Map = ({ restaurant }) => {
+const Map = ({ restaurant, isFull = false }) => {
   const mapRef = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
   const [viewport, setViewport] = useState({
@@ -57,12 +57,15 @@ const Map = ({ restaurant }) => {
     setShowPopup((b) => !b);
   };
 
+  console.log('\n', '\n', `viewport = `, viewport, '\n', '\n');
+
   return (
     <div className="text-black relative">
       <ReactMapGL
         {...viewport}
         width="100%"
-        height="calc(100vh - 64px)"
+        height={isFull ? 'calc(100vh - 64px)' : '400px'}
+        // height="400px"
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         ref={(instance) => (mapRef.current = instance)}
