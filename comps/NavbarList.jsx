@@ -15,7 +15,7 @@ const MyMenu = () => {
       <MenuButton className="btn btn-primary mr-1">
         <HamburgerIcon isWhite />
       </MenuButton>
-      <MenuList className="bg-white p-3">
+      <MenuList className="bg-white p-3 rounded-lg">
         {linkConfig.map((option) => (
           <MenuItem
             className="cursor-pointer hover:bg-green-300 hover:text-white px-4"

@@ -23,8 +23,8 @@ We do not specify a particular framework or set of libraries to use for this pro
 
 ## Requirements
 
-<!-- 1. Get JSON Feed
-   a. https://s3.amazonaws.com/br-codingexams/restaurants.json -->
+1. Get JSON Feed
+   a. https://s3.amazonaws.com/br-codingexams/restaurants.json
 
 2. Responsive Design
 

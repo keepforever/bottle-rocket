@@ -15,10 +15,10 @@ const MyMenuReach = () => {
       <MenuButton className="btn btn-primary mr-1">
         <div className="flex items-center">
           <HamburgerIcon className="h-12 w-12 mr-3" />
-          <p className="font-bold tracking-tighter text-red-500"> contact</p>
+          <p className="font-bold tracking-tighter text-red-500">contact</p>
         </div>
       </MenuButton>
-      <MenuList className="bg-white">
+      <MenuList className="bg-white rounded-lg">
         {linkConfig.map((option) => (
           <MenuItem
             className="cursor-pointer hover:bg-green-400 hover:text-white px-4"
