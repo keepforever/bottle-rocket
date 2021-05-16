@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
-import { XIcon, HeartIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/outline';
 import Map from '../comps/Map';
 
-import Layout from '../comps/Layout';
+import LayoutList from '../comps/LayoutList';
 import FailedToLoad from '../comps/FailedToLoad';
 
 const ImageGrid = ({ restaurants, onSelectRestaurant }) => {
@@ -210,14 +210,14 @@ const List = (props) => {
 
   if (fetchError)
     return (
-      <Layout title="Lunch Tyme">
+      <LayoutList title="Lunch Tyme">
         <FailedToLoad />
-      </Layout>
+      </LayoutList>
     );
 
   return (
     <>
-      <Layout title="Lunch Tyme">
+      <LayoutList title="Lunch Tyme">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div
             className="w-full pb-4"
@@ -231,7 +231,7 @@ const List = (props) => {
             <ImageGrid restaurants={restaurants} onSelectRestaurant={handleSelectRestaurant} />
           </div>
         </div>
-      </Layout>
+      </LayoutList>
 
       <DrawerDetail
         open={open}

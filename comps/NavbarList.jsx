@@ -1,11 +1,10 @@
-import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 
-import { linkConfig } from '../constants';
 import HamburgerIcon from './HamburgerIcon';
+import { linkConfig } from '../constants';
 
-const MyMenuReach = () => {
+const MyMenu = () => {
   const router = useRouter();
 
   const handleNavigate = (href) => {
@@ -14,15 +13,12 @@ const MyMenuReach = () => {
   return (
     <Menu>
       <MenuButton className="btn btn-primary mr-1">
-        <div className="flex items-center">
-          <HamburgerIcon />
-          <p className="font-bold tracking-tighter text-red-500"> contact</p>
-        </div>
+        <HamburgerIcon isWhite />
       </MenuButton>
-      <MenuList className="bg-white">
+      <MenuList className="bg-white p-3">
         {linkConfig.map((option) => (
           <MenuItem
-            className="cursor-pointer hover:bg-green-400 hover:text-white px-4"
+            className="cursor-pointer hover:bg-green-300 hover:text-white px-4"
             key={option.href}
             onSelect={() => {
               handleNavigate(option.href);
@@ -39,21 +35,20 @@ const MyMenuReach = () => {
   );
 };
 
-const NavbarWeb = () => {
+const NavbarList = () => {
   return (
-    <div className="h-16">
+    <div className="h-16 bg-green-400">
       <div className="px-6 flex items-center justify-between h-16">
-        <MyMenuReach />
-        <p className="font-extrabold tracking-tight text-red-500 text-xl md:text-2xl">
-          bottle rocket <span className="text-base font-normal ">&reg;</span>
-        </p>
+        <MyMenu />
+        <p className="text-white"> Lunch Tyme</p>
+        <img className="h-8 w-8" src="/icon_map@2x.png" alt="map icon" />
       </div>
     </div>
   );
 };
 
-NavbarWeb.defaultProps = {
+NavbarList.defaultProps = {
   title: 'Bottle Rocket',
 };
 
-export default NavbarWeb;
+export default NavbarList;

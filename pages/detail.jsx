@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Layout from '../comps/Layout';
+import LayoutList from '../comps/LayoutList';
 import FailedToLoad from '../comps/FailedToLoad';
 import Map from '../comps/Map';
 
@@ -12,8 +12,8 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
     'Cross Street': selectedRestaurant.location.crossStreet,
   };
   return (
-    <aside className="hidden w-full bg-white p-8 overflow-y-auto md:block">
-      <div className="pb-16 space-y-6">
+    <aside className="w-full bg-white md:p-8 overflow-y-auto">
+      <div className="hidden md:block pb-16 space-y-6">
         <div>
           <div className="block w-full aspect-w-7 aspect-h-4 rounded-lg overflow-hidden">
             <img src={selectedRestaurant.backgroundImageURL} alt="" className="object-cover" />
@@ -48,6 +48,37 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
           </dl>
         </div>
       </div>
+
+      <div className="md:hidden h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
+        <div className="relative flex-1">
+          <div className="pb-16 space-y-6">
+            <div>
+              <div className="block w-full rounded-lg" style={{ maxHeight: '400px' }}>
+                <Map restaurant={selectedRestaurant} />
+              </div>
+              <div className="flex items-start justify-between bg-green-400 p-4">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-100">
+                    <span className="sr-only">Details for </span>
+                    {selectedRestaurant.name}
+                  </h2>
+                  <p className="text-md font-light text-gray-200">{selectedRestaurant.category}</p>
+                </div>
+              </div>
+            </div>
+            <div className="px-4">
+              <dl className="mt-2 border-gray-200 divide-y divide-gray-200">
+                {Object.keys(displayInfo).map((key) => (
+                  <div key={key} className="py-3 flex justify-between text-sm font-medium">
+                    <dt className="text-gray-500">{key}</dt>
+                    <dd className="text-gray-900">{displayInfo[key]}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
     </aside>
   );
 };
@@ -74,37 +105,31 @@ const Detail = (props) => {
     fetchRestaurants();
   }, []);
 
-  const handleSelectRestaurant = (name) => {
-    setSelectedRestaurant(name);
-  };
-
   if (isLoading) return <p>Loading...</p>;
 
   if (fetchError)
     return (
-      <Layout title="Detail Page">
+      <LayoutList title="Detail Page">
         <FailedToLoad />
-      </Layout>
+      </LayoutList>
     );
 
   const currentRestaurant = restaurants.find((r) => r.name === selectedRestaurant);
-  // console.group(`Detail`);
-  // console.log('\n', '\n', `currentRestaurant = `, currentRestaurant, '\n', '\n');
-  // console.groupEnd();
+
   return (
-    <Layout title="Lunch Tyme">
+    <LayoutList>
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div
-          className="w-full pb-4"
-          style={{ maxHeight: 'calc(100vh - 64px)' /* , overflowX: 'scroll'  */ }}
-        >
+        <div className="w-full pb-4" style={{ maxHeight: 'calc(100vh - 64px)' }}>
           <DetailSidebar selectedRestaurant={currentRestaurant} />
         </div>
-        <div className="w-full" style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}>
+        <div
+          className="hidden w-full md:block"
+          style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'scroll' }}
+        >
           <Map restaurant={currentRestaurant} isFull />
         </div>
       </div>
-    </Layout>
+    </LayoutList>
   );
 };
 

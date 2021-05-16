@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import ReactMapGL, { Marker, Popup, ViewState } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MyPopup = ({ restaurant, toggleShowPopup }) => (
@@ -52,7 +52,7 @@ const Map = ({ restaurant, isFull = false }) => {
     longitude: restaurant?.location?.lng,
     zoom: 10,
   });
-  // console.log('\n', '\n', `viewport = `, viewport, '\n', '\n');
+
   const toggleShowPopup = () => {
     setShowPopup((b) => !b);
   };
@@ -62,8 +62,7 @@ const Map = ({ restaurant, isFull = false }) => {
       <ReactMapGL
         {...viewport}
         width="100%"
-        height={isFull ? 'calc(100vh - 64px)' : '400px'}
-        // height="400px"
+        height={isFull ? 'calc(100vh - 64px)' : '325px'}
         mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         ref={(instance) => (mapRef.current = instance)}
