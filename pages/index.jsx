@@ -14,6 +14,28 @@ const Home = () => {
               Please use the menu button in the upper right corner to navigate to the various
               solutions. <span className="font-bold">Note, the layouts are responsive.</span>
             </p>
+
+            <br />
+
+            <a
+              href="https://www.loom.com/share/7a00c87d9788462f9d01d77fc14f81bf"
+              class="no-underline hover:underline text-2xl text-blue-500"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Video Demo
+            </a>
+
+            <br />
+            <br />
+            <a
+              href="https://github.com/keepforever/bottle-rocket"
+              class="no-underline hover:underline text-2xl text-blue-500"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Code Repo
+            </a>
           </div>
 
           <div className="mt-10">
