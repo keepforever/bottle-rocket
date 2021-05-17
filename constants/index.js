@@ -30,14 +30,13 @@ export const summaryConfig = [
   {
     name: 'Responsive Design',
     description:
-      'The problem statement left a lot to the imagination so I took liberties in order to create a somewhat coherent experience.  The most awkward was the "translate the comps into a two-column layout", which looks a bit odd for the web view, but, I followed instructions.',
+      'The problem statements left a lot to the imagination so I took liberties in order to put the requirements together in a somewhat coherent manner.',
   },
   {
     name: 'Translate iOS Comp',
     description:
       "Wasn't exactly sure how to handle this one in relation to the previous requirement, so, again, some  liberties were taken.  Please see demo video.",
   },
-
   {
     name: 'Map View',
     description:

@@ -4,7 +4,7 @@ import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import { linkConfig } from '../constants';
 import HamburgerIcon from './HamburgerIcon';
 
-const MyMenuReach = ({ title }) => {
+const HamburgerMenu = ({ title }) => {
   const router = useRouter();
 
   const handleNavigate = (href) => {
@@ -42,7 +42,7 @@ const NavbarWeb = ({ title = '' }) => {
   return (
     <div className="h-16">
       <div className="px-6 flex items-center justify-between h-16">
-        <MyMenuReach title={title} />
+        <HamburgerMenu title={title} />
         <p className="font-extrabold tracking-tight text-red-500 text-xl md:text-2xl">
           bottle rocket <span className="text-base font-normal ">&reg;</span>
         </p>

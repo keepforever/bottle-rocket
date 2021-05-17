@@ -97,12 +97,6 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
 };
 
 const DrawerDetail = ({ open, setOpen, selectedRestaurant }) => {
-  const displayInfo = {
-    city: selectedRestaurant?.location?.city,
-    address: selectedRestaurant?.location?.address,
-    'Cross Street': selectedRestaurant?.location?.crossStreet,
-  };
-  console.log('\n', '\n', `selectedRestaurant = `, selectedRestaurant, '\n', '\n');
   return (
     <div
       className={classnames('mobile-nav', {
@@ -164,7 +158,7 @@ const DrawerDetail = ({ open, setOpen, selectedRestaurant }) => {
   );
 };
 
-const List = (props) => {
+const List = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [fetchError, setFetchError] = useState();
   const [selectedRestaurant, setSelectedRestaurant] = useState('');
@@ -211,10 +205,7 @@ const List = (props) => {
     <>
       <LayoutList title="Lunch Tyme">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div
-            className="w-full pb-4"
-            style={{ maxHeight: 'calc(100vh - 64px)' /* , overflowX: 'scroll'  */ }}
-          >
+          <div className="w-full pb-4" style={{ maxHeight: 'calc(100vh - 64px)' }}>
             <DetailSidebar
               selectedRestaurant={restaurants.find((r) => r.name === selectedRestaurant)}
             />

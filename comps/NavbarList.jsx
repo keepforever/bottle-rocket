@@ -4,7 +4,7 @@ import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import HamburgerIcon from './HamburgerIcon';
 import { linkConfig } from '../constants';
 
-const MyMenu = () => {
+const HamburgerMenu = () => {
   const router = useRouter();
 
   const handleNavigate = (href) => {
@@ -39,7 +39,7 @@ const NavbarList = () => {
   return (
     <div className="h-16 bg-green-400">
       <div className="px-6 flex items-center justify-between h-16">
-        <MyMenu />
+        <HamburgerMenu />
         <p className="text-white text-xl"> Lunch Tyme</p>
         <img className="h-8 w-8" src="/icon_map@2x.png" alt="map icon" />
       </div>

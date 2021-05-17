@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { MailIcon, PhoneIcon } from '@heroicons/react/outline';
-import axios from 'axios';
+import React from 'react';
 
 import LayoutWeb from '../comps/LayoutWeb';
-import FailedToLoad from '../comps/FailedToLoad';
-import Map from '../comps/Map';
 
 const LeftColumn = () => {
   return (

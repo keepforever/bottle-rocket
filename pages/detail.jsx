@@ -78,7 +78,7 @@ const DetailSidebar = ({ selectedRestaurant = {} }) => {
   );
 };
 
-const Detail = (props) => {
+const useDetailUtils = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [fetchError, setFetchError] = useState();
   const [selectedRestaurant, setSelectedRestaurant] = useState('');
@@ -100,6 +100,19 @@ const Detail = (props) => {
     fetchRestaurants();
   }, []);
 
+  const currentRestaurant = restaurants.find((r) => r.name === selectedRestaurant);
+
+  return {
+    restaurants,
+    fetchError,
+    selectedRestaurant,
+    isLoading,
+    currentRestaurant,
+  };
+};
+
+const Detail = () => {
+  const { restaurants, fetchError, isLoading, currentRestaurant } = useDetailUtils();
   if (isLoading) return <p>Loading...</p>;
 
   if (fetchError)
@@ -108,8 +121,6 @@ const Detail = (props) => {
         <FailedToLoad />
       </LayoutList>
     );
-
-  const currentRestaurant = restaurants.find((r) => r.name === selectedRestaurant);
 
   return (
     <LayoutList>

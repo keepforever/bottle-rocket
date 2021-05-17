@@ -34,7 +34,7 @@ const MapDetail = ({
         maxZoom={15}
         mapStyle="mapbox://styles/keepforever/ckorcscny3jm718pq6xwbrfvx"
       >
-        {restaurants.map((r, index) => {
+        {restaurants.map((r) => {
           return (
             <Marker
               latitude={r?.location?.lat}
