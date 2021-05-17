@@ -108,11 +108,13 @@ const useDetailUtils = () => {
     selectedRestaurant,
     isLoading,
     currentRestaurant,
+    setSelectedRestaurant,
   };
 };
 
 const Detail = () => {
-  const { restaurants, fetchError, isLoading, currentRestaurant } = useDetailUtils();
+  const { restaurants, fetchError, isLoading, currentRestaurant, setSelectedRestaurant } =
+    useDetailUtils();
   if (isLoading) return <p>Loading...</p>;
 
   if (fetchError)

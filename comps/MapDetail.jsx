@@ -1,5 +1,7 @@
-import { useRef, useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { useRef, useState, Fragment } from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
+import { HomeIcon } from '@heroicons/react/outline';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapPopup from './MapPopup';
 
@@ -16,6 +18,7 @@ const MapDetail = ({
     longitude: restaurant?.location?.lng,
     zoom: 13,
   });
+  const [hoverPopup, setHoverPopup] = useState(null);
 
   const toggleShowPopup = () => {
     setShowPopup((b) => !b);
@@ -36,35 +39,34 @@ const MapDetail = ({
       >
         {restaurants.map((r) => {
           return (
-            <Marker
-              latitude={r?.location?.lat}
-              longitude={r?.location?.lng}
-              offsetLeft={-15}
-              offsetTop={-15}
-            >
-              <button
-                onClick={() => {
-                  onSelectRestaurant(r.name);
-                }}
-                type="button"
-                style={{ width: '30px', height: '30px', fontSize: '30px' }}
+            <Fragment key={r.name}>
+              <Marker
+                latitude={r?.location?.lat}
+                longitude={r?.location?.lng}
+                offsetLeft={-15}
+                offsetTop={-15}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="fill-current text-black"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <button
+                  onClick={() => {
+                    console.log('\n', '\n', `r.name = `, r.name, '\n', '\n');
+                    onSelectRestaurant(r.name);
+                  }}
+                  type="button"
+                  style={{ width: '30px', height: '30px', fontSize: '30px' }}
+                  onMouseEnter={() => {
+                    setHoverPopup({ restaurant: { ...r } });
+                  }}
+                  onMouseLeave={() => {
+                    setHoverPopup(null);
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-              </button>
-            </Marker>
+                  <HomeIcon className="h-8 w-8" />
+                </button>
+              </Marker>
+              {!!hoverPopup && (
+                <MapPopup restaurant={hoverPopup?.restaurant} toggleShowPopup={() => {}} />
+              )}
+            </Fragment>
           );
         })}
         <Marker
@@ -78,20 +80,7 @@ const MapDetail = ({
             type="button"
             style={{ width: '30px', height: '30px', fontSize: '30px' }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-current text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
+            <HomeIcon className="h-8 w-8 fill-current text-green-500" />
           </button>
         </Marker>
 
